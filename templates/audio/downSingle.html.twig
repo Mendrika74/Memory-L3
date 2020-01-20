@@ -1,0 +1,17 @@
+{% extends 'base_explorer.html.twig'%}
+
+{% block body %}
+    <h1>Un fichier téléchargé !</h1>
+    <div>
+        
+            {% for file in Title %}
+            <li>
+                 {{ file }}
+             </li>
+            {% endfor %}
+       
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base_explorer.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Register</h1>
+      
+    {{ form_start(registrationForm, {'action': path('app_register'), 'method': 'POST', 'enctype': 'multipart/form-data'} ) }}        
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.username) }}
+        {{ form_row(registrationForm.plainPassword) }}
+        {{ form_row(registrationForm.confirm_password) }}
+        {{ form_row(registrationForm.roles) }}
+        {{ form_row(registrationForm.image) }}             
+        {{ form_row(registrationForm.agreeTerms) }}
+        <button class="btn" >Register</button>
+    {{ form_end(registrationForm) }} 
+        <form action="{{ path('upload_image') }}" method="post" enctype="multipart/form-data"> 
+           <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="submit" value="Upload Image" name="submit">        
+        </form>
+     
+{% endblock %}
