@@ -7,20 +7,29 @@
         <meta name="author" content="Coderthemes">
         <title>{% block title %}explorer{% endblock %}</title>
         {% block stylesheets %}
+        <!-- Datatable CSS -->
+            <link href="{{ asset('assets/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('assets/plugins/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('assets/plugins/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 
+            
             <link rel="stylesheet" href= "{{ asset('assets/plugins/morris/morris.css') }}">
+
             <!-- App css -->
             <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+
             <!-- make dark style-->
-           <link href="{{ asset('assets/css/core.css') }}" rel="stylesheet" type="text/css" />
-           <link href="{{ asset('assets/css/components.css') }}" rel="stylesheet" type="text/css" /> 
+            <link href="{{ asset('assets/css/core.css') }}" rel="stylesheet" type="text/css" />
+
+            <link href="{{ asset('assets/css/components.css') }}" rel="stylesheet" type="text/css" /> 
             <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css" />
             <link href="{{ asset('assets/css/pages.css') }}" rel="stylesheet" type="text/css" />
             <link href="{{ asset('assets/css/menu.css') }}" rel="stylesheet" type="text/css" />
-            <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" type="text/css" /> 
-                    
-
+            <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" type="text/css" />        
         {% endblock %}
+
     </head>
 
       {% block body %}
@@ -30,9 +39,31 @@
         {% endblock %}               
      
 
-        {% block javascripts %}
-               
 
+        {% block javascripts %}
+        <!--Jquery-->
+        <script src="{{ asset('myScript/jquery.js') }}"></script>
+        <script src="{{ asset('myScript/jquery-1.12.0.min.js') }}"></script>
+        <script src="{{ asset('myScript/jquery.min.js') }}"></script>
+         <!-- Datatable init js -->
+        <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
+        <!-- App js -->
+        <script src="{{ asset('assets/js/jquery.core.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.app.js') }}"></script>
+        <!--Datatables-->
+        <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatables/buttons.bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatables/jszip.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatables/pdfmake.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatables/vfs_fonts.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatables/buttons.print.min.js') }}"></script>
+        <!-- CHARGE MY OWN SCRIPT-->
+        <script src="{{ asset('myScript/Script.js') }}"></script>       
+         
+        
         {% endblock %}
     
 

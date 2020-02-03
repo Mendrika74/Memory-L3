@@ -15,20 +15,21 @@ class AudioController extends AbstractController
      */
     public function index()
     {
-        $host = "192.168.43.247";
-        $login = "VirusTotal";
-        $password = "virus";        
-        $remote_file = ".";              
+        $host = "147.135.254.144";    //  192.168.43.247  or 10.0.56.239
+        $login = "vicidial";         //VirusTotal
+        $password = "V1c1d1@L";        //virus   
+        //$remote_file = ".";              
         $local_file = "D:\TP_symfony\demo\\EFS_2\public\\ftp";       
         $ftp = new \FtpClient\FtpClient();
         $conn_id = $ftp->connect($host);
         if($ftp->login($login, $password))
-        {
+        {           
             $sizeGo = $ftp->dirSize($remote_file,true); 
             $sizeMo = $sizeGo * 1024 * 1024;
             $total = $ftp->count();   
-            $ftp_name = $ftp->get($conn_id);                         
-            $files =   $ftp->nlist($remote_file);      
+            $ftp_name = $ftp->get($conn_id);     
+                                    
+            $files =   $ftp->nlist($remote_file);                 
             $dir ="D:\TP_symfony\demo\\EFS_2\public\\listening";
             $mask = "*.mp3";
              array_map( "unlink", glob("D:/TP_symfony/demo/EFS_2/public/listening/" . $mask ) );
@@ -54,10 +55,10 @@ class AudioController extends AbstractController
         $title = $request->get('Title');       
 
         $source_directory = "."; 
-        $host = "192.168.43.247";
-        $login = "VirusTotal";
-        $password = "virus";        
-        $remote_file = ".";             
+       $host = "147.135.254.144";    
+        $login = "vicidial";         
+        $password = "V1c1d1@L";        
+        //$remote_file = ".";             
         $local_file = "D:\TP_symfony\demo\\EFS_2\public\\listening";
         $mode = FTP_BINARY;
         $ftp = new \FtpClient\FtpClient();
@@ -71,7 +72,7 @@ class AudioController extends AbstractController
                     mkdir($source_directory);
                 }
                 chdir($source_directory); 
-            } 
+            }            
             $contents = $ftp->nlist('.');
             foreach ($contents as $file) { 
                 if ($file == '.' || $file == '..') {    
@@ -93,10 +94,10 @@ class AudioController extends AbstractController
     {
         $title = $request->get('Title');       
         $source_directory = "."; 
-        $host = "192.168.43.247";
-        $login = "VirusTotal";
-        $password = "virus";        
-        $remote_file = ".";             
+       $host = "147.135.254.144";  
+        $login = "vicidial";      
+        $password = "V1c1d1@L";       
+        $remote_file = "\M\mahaleo";             
         $local_file = "D:\From_server_one";
         $mode = FTP_BINARY;
         $ftp = new \FtpClient\FtpClient();
@@ -132,9 +133,9 @@ class AudioController extends AbstractController
     */
     public function DownloadAll()
     {
-        $host = "192.168.43.247";
-        $login = "VirusTotal";
-        $password = "virus";
+       $host = "147.135.254.144";    
+        $login = "vicidial";         
+        $password = "V1c1d1@L";  
         
         $remote_file = ".";              
         $local_file = "D:\From_server_all";        

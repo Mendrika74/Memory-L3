@@ -1,7 +1,17 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% block stylesheets %}
  <link href="{{asset('assets/css/core.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
 {{ form_start(form) }}
-    {{ form_widget(form) }}  
+<div class="form-group"> 
+    <label for="">Adresse mail</label><br>
+    {{ form_widget(form.email)}}<br><br>
+    <label for="">Nom d'utilisateur</label><br>  
+    {{ form_widget(form.username) }}<br><br>  
+    <label for="">Role(s)</label><br>  
+    {{ form_widget(form.roles) }}<br><br>
+    <label for="">Nom de l'image</label><br>
+    {{ form_widget(form.image) }}<br><br>       
     <button class="btn">{{ button_label|default('Enregistrer') }}</button>
+</div>
 {{ form_end(form) }}

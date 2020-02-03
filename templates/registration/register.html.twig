@@ -1,13 +1,17 @@
 {% extends 'base_explorer.html.twig' %}
 
+{% form_theme registrationForm 'bootstrap_4_layout.html.twig' %}
+
+
 {% block title %}Register{% endblock %}
 
 {% block body %}
+<div style="margin-left:30px;" >
     <h1>Register</h1>
       
-    {{ form_start(registrationForm, {'action': path('app_register'), 'method': 'POST', 'enctype': 'multipart/form-data'} ) }}        
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.username) }}
+    {{ form_start(registrationForm) }}        
+        {{ form_row(registrationForm.email, {'attr': { 'placeholder':"stg.info@bpooceanindien.com" }}) }}
+        {{ form_row(registrationForm.username, {'attr': { 'placeholder':"Mendrika" }}) }}
         {{ form_row(registrationForm.plainPassword) }}
         {{ form_row(registrationForm.confirm_password) }}
         {{ form_row(registrationForm.roles) }}
@@ -19,5 +23,5 @@
            <input type="file" name="fileToUpload" id="fileToUpload">
             <input type="submit" value="Upload Image" name="submit">        
         </form>
-     
+</div>    
 {% endblock %}

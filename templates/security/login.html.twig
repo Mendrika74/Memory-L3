@@ -2,8 +2,80 @@
 
 {% block title %}Log in!{% endblock %}
 
+{% block stylesheets %}
+    <!-- App Favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- App title -->
+        <title>Adminto - shared on themelock.com</title>
+
+        <!-- App CSS -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+        <!--<link href="assets/css/icons.css" rel="stylesheet" type="text/css" />-->
+        <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+        <!--<link href="assets/css/menu.css" rel="stylesheet" type="text/css" />-->
+        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+
+{% endblock %}
+
 {% block body %}
-<form method="post">
+<div class="account-pages"></div>
+        <div class="clearfix"></div>
+        <div class="wrapper-page">
+        <div class="text-center">
+                <a href="index.html" class="logo"><span>BPO<span>CALL</span></span></a>
+                <h5 class="text-muted m-t-0 font-600">Recherche d'enregistrement</h5>
+        </div>
+        <div class="m-t-40 card-box">
+                <div class="text-center">
+                    <h4 class="text-uppercase font-bold m-b-0">Connexion</h4>
+                </div>
+                <div class="panel-body">
+                   <form method="post" class="form-horizontal m-t-20">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            Vous êtes connecté  {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail">Adresse mail</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+    <label for="inputPassword">Mot de passe </label>
+    <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
+    <div class="form-group text-center m-t-30">
+        <div class="col-xs-12">
+            <button class="btn btn-lg btn-primary" type="submit">
+                Connexion
+            </button>
+        </div>
+    </div>
+</form>
+
+                </div>
+            </div>
+            <!-- end card-box-->
+
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <p class="text-muted">S'inscrire? <a href="{{ path('app_register') }}" class="text-primary m-l-5"><b>Cliquez !</b></a></p>
+                </div>
+            </div>
+            
+        </div>
+
+
+
+        
+<form method="post" class="form-horizontal m-t-20">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -20,20 +92,7 @@
     <label for="inputPassword">Password</label>
     <input type="password" name="password" id="inputPassword" class="form-control" required>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
 
     <button class="btn btn-lg btn-primary" type="submit">
         Sign in

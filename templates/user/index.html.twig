@@ -4,7 +4,6 @@
 
 {% block body %}
 
-
     <!-- Begin page -->
         <div id="wrapper">
 
@@ -66,17 +65,16 @@
                         <!-- User -->
                         <div class="user-box">
                             <div class="user-img">
-                                <img src="{{ asset('assets/images/users/avatar-1.jpg')}}" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+                                <img src="{{ asset('uploads/' ~ app.user.image) }}" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
                                 <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
-                            </div>
-                            <h5><a href="#">Mat Helme</a> </h5>
+                            </div><br>
+                            
                             <ul class="list-inline">
                                 <li>
-                                    <a href="#" >
-                                        <i class="zmdi zmdi-settings"></i>
+                                    <a href="#" class="text-custom">
+                                        <h5><a href="#">{{ app.user.username }}</a> </h5>
                                     </a>
                                 </li>
-
                                 <li>
                                     <a href="#" class="text-custom">
                                         <i class="zmdi zmdi-power"></i>
@@ -119,45 +117,65 @@
                 <!--===============================================-->
             <!-- Table beginning -->
             <h1>User index</h1>
-            <div class="table-responsive">
-                <table class="table" style="margin-left: 280px";>
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Email</th>
-                            <th>Username</th>
-                            <th>Roles</th>
-                        <!-- <th>Password</th> -->
-                            <th>Image</th>
-                            <th>CreatedAt</th>
-                            <th>actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for user in users %}
-                        <tr>
-                            <td>{{ user.id }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.username }}</td>
-                            <td>{{ user.roles ? user.roles|join(', ') : '' }}</td>
-                        <!-- <td>{{ user.password }}</td> -->
-                            <td>{{ user.image }}</td>
-                            <td>{{ user.createdAt ? user.createdAt|date('d-m-Y') : '' }}</td>
-                            <td>
-                                <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                                <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="8">no records found</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <a href="{{ path('user_new') }}">Create new</a>
-        </div>
+
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <table class="table"  id="datatables">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Email</th>
+                                                <th>Username</th>
+                                                <th>Roles</th>                      
+                                                <th>Image</th>
+                                                <th>CreatedAt</th>
+                                                <th>actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for user in users %}
+                                            <tr>
+                                                <td>{{ user.id }}</td>
+                                                <td>{{ user.email }}</td>
+                                                <td>{{ user.username }}</td>
+                                                <td>{{ user.roles ? user.roles|join(', ') : '' }}</td>                        
+                                                <td>{{ user.image }}</td>
+                                                <td>{{ user.createdAt ? user.createdAt|date('d-m-Y') : '' }}</td>
+                                                <td>
+                                                    <a href="{{ path('user_show', {'id': user.id}) }}">
+                                                        <span class="fa  fa-info-circle"></span>
+                                                    </a>&nbsp;&nbsp;&nbsp;
+                                                    <a href="{{ path('user_edit', {'id': user.id}) }}">
+                                                         <span class="fa    fa-edit"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% else %}
+                                            <tr>
+                                                <td colspan="8"></td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>                                  
+
+                                </div>
+                            </div><!-- end col -->
+                        </div>
+                         </div> <!-- container -->
+
+                </div> <!-- content -->               
+                 <footer class="footer">
+                    2020 © BPO.
+                </footer>
+            </div> 
+        </div>    
         
 {% endblock %}
+ 
  
